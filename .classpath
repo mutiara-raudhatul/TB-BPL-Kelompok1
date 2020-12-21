@@ -7,5 +7,9 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Users/Widows/git/TB-BPL-Kelompok1/mysql-connector-java-8.0.22.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Widows/git/TB-BPL-Kelompok1/Resources/rs2xml.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Widows/git/TB-BPL-Kelompok1/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Widows/git/TB-BPL-Kelompok1/Resources/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Widows/git/TB-BPL-Kelompok1/Resources/mysql-connector-java-8.0.22.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
