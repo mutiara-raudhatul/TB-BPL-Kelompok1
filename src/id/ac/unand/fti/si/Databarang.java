@@ -29,6 +29,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Databarang extends JFrame {
 	
@@ -410,6 +412,36 @@ public class Databarang extends JFrame {
 		contentPane.add(scrollPane);
 		
 		tabeldetail = new JTable();
+		tabeldetail.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				try {
+					
+					Integer row = tabeldetail.getSelectedRow();
+					String click = (tabeldetail.getModel().getValueAt(row, 0).toString());
+					sql = "SELECT sku, nama, stok, harga_beli, harga_jual FROM barang WHERE sku='"+click+"'";
+					ps = connection.prepareStatement(sql);
+					rs = ps.executeQuery();
+					if (rs.next()) {
+						String add1 = rs.getString("sku");
+						Sku.setText(add1);
+						String add2 = rs.getString("nama");
+						Nama.setText(add2);
+						String add3 = rs.getString("stok");
+						Stok.setText(add3);
+						String add4 = rs.getString("harga_beli");
+						Hargabeli.setText(add4);
+						String add5 = rs.getString("harga_jual");
+						Hargajual.setText(add5);
+						
+					}
+					
+				} catch (Exception et) {
+					JOptionPane.showMessageDialog(null, et);
+				}
+			}
+		});
 		tabeldetail.setCellSelectionEnabled(true);
 		tabeldetail.setAutoscrolls(false);
 		tabeldetail.setModel(new DefaultTableModel(
@@ -429,7 +461,7 @@ public class Databarang extends JFrame {
 				"Sku", "Nama", "Stok", "Harga Beli", "Harga Jual"
 			}
 		));
-		tabeldetail.setFont(new Font("Cambria", Font.PLAIN, 14));
+		tabeldetail.setFont(new Font("Cambria", Font.PLAIN, 20));
 		scrollPane.setViewportView(tabeldetail);
 		
 		JPanel panel_1 = new JPanel();
